@@ -2,7 +2,7 @@
 Bilbo è il prototipo di applicazione web bassata su Express / node / mongoDb . 
 Con bilbo puoi vedere la lista degli articoli presenti nel catalogo, i dettagli di un singolo articolo o la lista delle prenotazioni 
 Per utilizzare scaricate la cartella e aprirla nel terminale . Con il comando npm start fate partire il server sulla porta 8000.
-Per il cient aprite il file index.http nella cartella ui . 
+Per il cient aprite il file index.http nella cartella Client . 
 
 di seguito trovate la documentazione delle Api svilupapte 
 
