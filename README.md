@@ -10,17 +10,14 @@ di seguito trovate la documentazione delle Api svilupapte
 
 Questa api permette di recuperare dal database i documents nella collezione Articoli e li ritorna in formato json  in caso di errore mostra a schermo un messaggio di errore 
 
-/get API that retrive all the articoli and send them as a response (as a json)
+```
+//get API that retrive all the articoli and send them as a response (as a json)
+
+
 app.get('/bilboApi/articoli', (req, res, next)=>{
 //the api  uses find() method of the "articoli" schema chained with exec() method to execute a query to retrive 
 //all documents in articoli collection 
     articoli.find().exec().then(docs=> {
-
-//this little loop was used for debugging the code
-        /* docs.forEach(movie => {
-            console.log(movie.title); used for debugging });*/
-
-
 // the send() method send the retrived documents as a response if there are no errors 
         res.send(docs);
         
@@ -34,7 +31,7 @@ app.get('/bilboApi/articoli', (req, res, next)=>{
     console.log('handling GET request to Articoli')
 
 });
-
+```
 
 
 
@@ -46,7 +43,7 @@ title
 autore
 casa_editrice
 codice_isbn
-
+```
 //api that create a new document using a mongoose schema and save the document on the database 
 //the api expect to receive anno_pubblicazione, title, autore, casa_editrice amd codice_isbn fields in the request body 
 app.post('/bilboApi/aggiungi_articolo', (req, res, next)=>{
@@ -71,7 +68,7 @@ console.log('handling POST request to Articoli')
 
 });
 
-
+```
 
 
 
@@ -84,6 +81,7 @@ L’api si aspetta nel corpo della richiesta l’_id di un articolo esistente ne
 
 // get api that retrive an item and send it (as a json)
 // the api expect a json like {"_id" : "actul_id_of_the_object"} as the body of the request
+```
 app.get('/bilboApi/articoli/_id', (req, res, next)=>{
 
 // the api uses findBtId() method chained with exex() method to execute a query and retrive the firts documents from 
@@ -115,14 +113,14 @@ app.get('/bilboApi/articoli/_id', (req, res, next)=>{
     console.log('handling GET request to dettagli articolo')
 });
 
-
+```
 
 
 
 5.4.4 Aggiorna Stato
 Questa api permette di aggiornare il campo “stato” di un document della collection “articoli” sul database 
 l’api si aspetta nel corpo della richiesta l’_id di un articolo esistente nel catalogo
-
+```
 // patch api that update the "stato" field of the selected document in the articoli collection. 
 // the api expect the id of the document to be updated as the body of the request
 // the request body sould be like this :  {"_id" : "actul_id_of_the_object"} 
@@ -145,13 +143,13 @@ app.patch('/bibloApi/articoli/_id/update_disponibilita', (req, res, next) =>{
         }
     })
 });
-
+```
 
 
 
 5.4.5 Lista Prenotazioni
 Questa api permette di recuperare dal database tutti i documents nella collection “Prenotazioni” e  li ritorna in formato json  in caso di errore mostra a schermo un messaggio di errore 
-
+```
  //get api that retrive all the documents in the "prenotazioni" collection and send them in the resposne (as a json )
 app.get('/bilboApi/prenotazioni', (req, res, next)=>{
 //the api  uses find() method of the "prenotazioni" schema chained with exec() method to execute a query to retrive 
@@ -170,14 +168,14 @@ app.get('/bilboApi/prenotazioni', (req, res, next)=>{
 //esed for debug  
     console.log('handling GET request to Prenotazioni')
 });
-
+```
 
 
 
 5.4.6 Cancella Prenotazione
 
 Questa api permette di cancellare dalla collection “prenotazioni” il primo document con  l’_id uguale a quello che gli viene passato nella request .
-
+```
 //delete api that delete a documents from the "prenotazioni" collection 
 //the api expect the id of documents to be deleted as the respose body 
 // the request body sould be like this :  {"_id" : "actul_id_of_the_object"} 
@@ -193,7 +191,7 @@ app.delete('/cancella_prenotazione', (req, res, next)=>{
      res.json("Deleted Successfully");
 
  });
-
+```
 
 
 5.4.7 Aggiungi Prenotazioni 
@@ -203,8 +201,8 @@ data
 titolo
 utente
 _id dell’articolo prenotato
-
-/api that create a new document using a mongoose schema and save the document on the database 
+```
+//api that create a new document using a mongoose schema and save the document on the database 
 //the api expect to receive anno_pubblicazione, title, autore, casa_editrice amd codice_isbn fields in the request body 
 app.post('/bilboApi/aggiungi_prenotazione', (req, res, next)=>{
 
@@ -222,5 +220,5 @@ app.post('/bilboApi/aggiungi_prenotazione', (req, res, next)=>{
 console.log('handling POST request to prenotazioni')
 });
 
-
+```
 
